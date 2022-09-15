@@ -1,11 +1,16 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
 
 
-export default function Information() {
+export default function Information({ image, name, description }) {
     return (
-        <View>
-            <Text>Soy Information</Text>
+        <View >
+            <Image
+                style={{ width: 300, height: 300 }}
+                source={{ uri: `${image}` }}
+            />
+            <Text >{name}</Text>
+            <Text >{description}</Text>
         </View>
-    );
+    )
 }
