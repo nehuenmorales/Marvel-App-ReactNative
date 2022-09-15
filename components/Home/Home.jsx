@@ -22,7 +22,6 @@ export default function Home() {
             .finally(() => setLoading(false));
     }, []);
 
-    console.log(data)
 
     return (
         <View>
