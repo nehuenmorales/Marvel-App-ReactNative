@@ -32,7 +32,7 @@ export default function Detail({ route }) {
     return (
         <Tab.Navigator
             initialRouteName="Information"
-            tabBarOptions={{
+            screenOptions={{
                 activeTintColor: 'darkred'
             }}
         >

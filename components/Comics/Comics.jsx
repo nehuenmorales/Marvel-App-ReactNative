@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, ActivityIndicator, ScrollView, FlatList } from 'react-native';
+import { View, ActivityIndicator, ScrollView, FlatList, _View, StyleSheet } from 'react-native';
 import Comic from './CardComic.jsx';
 import apiParams from '../../config.js';
 import axios from 'axios';
@@ -35,20 +35,42 @@ export default function Comics({ listComics }) {
                 isLoading
                     ? <ActivityIndicator size="large" color="#00ff00" />
                     : <FlatList
-                        contentContainerStyle={{ alignItems: 'center' }}
+                        // style={styles.container}
+                        // contentContainerStyle={{ alignItems: 'center', justifyContent: 'center', display: 'flex' }}
                         data={data}
                         keyExtractor={({ id }) => id.toString()}
                         horizontal
-                        pagingEnabled
+
                         renderItem={({ item }) => (
-                            <Comic
-                                key={item.id}
-                                name={item.title}
-                                image={`${item?.thumbnail?.path}.${item.thumbnail.extension}`}
-                            />
+                            <View style={styles.container}>
+                                <Comic
+                                    style={styles.card}
+                                    key={item.id}
+                                    name={item.title}
+                                    image={`${item?.thumbnail?.path}.${item.thumbnail.extension}`}
+                                />
+                            </View>
                         )}
                     />
             }
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        height: '100%',
+        display: 'flex',
+        backgroundColor: 'blue',
+    },
+    card: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 50
+    },
+    logo: {
+        width: 66,
+        height: 58,
+    },
+});
